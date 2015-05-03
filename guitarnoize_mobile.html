@@ -1,0 +1,42 @@
+<head>
+  <title>guitarnoize_mobile</title>
+</head>
+
+<body>
+</body>
+
+<template name="defaultLayout">
+	<div class="container">
+		<header>			
+			<h2>Header</h2>
+		</header>
+	</div>
+
+	<div class="container">
+		{{> yield}}	
+	</div>
+
+	<div class="container">
+		<footer>
+			<h2>Footer</h2>
+		</footer>
+	</div>
+</template>
+
+<template name="home">
+	<h1>Homepage</h1>
+	<ul>
+	{{#each posts}}
+		<li><a href="/post/{{ID}}">{{title}}</a></li>
+	{{/each}}
+	</ul>
+</template>
+
+<template name="post">
+	<h1>Single post</h1>
+	{{#with current_post}}
+		<h2>{{title}}</h2>
+		<h3>{{date}}</h3>
+		<div class="excerpt">{{{excerpt}}}</div>
+	{{/with}}
+</template>
