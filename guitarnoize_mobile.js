@@ -1,3 +1,5 @@
+posts = new Mongo.Collection('posts');
+
 if (Meteor.isClient) {
 
   Template.home.helpers({
@@ -24,7 +26,6 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 
-  posts = new Mongo.Collection('posts');
 
   Meteor.methods({
     updatePosts: function(data) {
