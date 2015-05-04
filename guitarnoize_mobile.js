@@ -1,7 +1,17 @@
 if (Meteor.isClient) {
+
   Template.home.helpers({
     posts: function () {
-      return Session.get('posts');
+      var data = Session.get('posts');
+      Meteor.call('updatePosts', data, function (error, result) {
+        if (error) {          
+          console.log(error);
+        }
+        if (result) {          
+          console.log(result);
+        }
+      });
+      return data;      
     }
   });
 
@@ -13,7 +23,24 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
+
+  posts = new Mongo.Collection('posts');
+
+  Meteor.methods({
+    updatePosts: function(data) {
+      // console.log(data.title);
+      _.each(data, function(post) {
+        var ID = post.ID;
+        var title = post.title;
+  
+        posts.insert({
+          ID: ID,
+          title: title
+        });
+  
+      })
+
+    }
   });
+
 }
