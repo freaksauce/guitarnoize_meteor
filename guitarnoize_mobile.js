@@ -6,14 +6,14 @@ if (Meteor.isClient) {
     posts: function () {
       var data = Session.get('posts');
       Meteor.call('updatePosts', data, function (error, result) {
-        if (error) {          
+        if (error) {
           console.log(error);
         }
-        if (result) {          
+        if (result) {
           console.log(result);
         }
       });
-      return data;      
+      return data;
     }
   });
 
@@ -33,12 +33,12 @@ if (Meteor.isServer) {
       _.each(data, function(post) {
         var ID = post.ID;
         var title = post.title;
-  
+
         posts.insert({
           ID: ID,
           title: title
         });
-  
+
       })
 
     }

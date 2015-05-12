@@ -7,13 +7,13 @@
 
 <template name="defaultLayout">
 	<div class="container">
-		<header>			
+		<header>
 			<h2>Header</h2>
 		</header>
 	</div>
 
 	<div class="container">
-		{{> yield}}	
+		{{> yield}}
 	</div>
 
 	<div class="container">
@@ -37,6 +37,6 @@
 	{{#with current_post}}
 		<h2>{{{title}}}</h2>
 		<h3>{{date}}</h3>
-		<div class="excerpt">{{{excerpt}}}</div>
+		<div class="content">{{{content}}}</div>
 	{{/with}}
 </template>
