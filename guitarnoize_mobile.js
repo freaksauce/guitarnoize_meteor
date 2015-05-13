@@ -2,6 +2,12 @@ posts = new Mongo.Collection('posts');
 
 if (Meteor.isClient) {
 
+  Template.loadingTemplate.onRendered(function() {
+    Meteor.setTimeout(function() {
+      $('.logo').addClass('show');
+    }, 300);
+  });
+
   Template.home.onCreated(function() {
     if (Session.get('posts') == undefined) {
       Router.go('loading');

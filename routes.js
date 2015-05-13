@@ -5,7 +5,12 @@ Router.map(function() {
 		data: function() {
 			$.getJSON( "http://guitarnoize.com/wp-json/posts", function( data ) {
 				Session.set('posts', data);
-				Router.go('/home');
+				$('.logo').velocity({
+					marginTop: '-=50px',
+					opacity: 0
+				}, 400, function() {
+					Router.go('/home');
+				});
 			});
 		}
 	});
