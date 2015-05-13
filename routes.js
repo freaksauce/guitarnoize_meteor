@@ -8,9 +8,11 @@ Router.map(function() {
 				$('.logo').velocity({
 					marginTop: '-=50px',
 					opacity: 0
-				}, 400, function() {
-					Router.go('/home');
-				});
+				}, {duration:200, easing:'ease-out', complete: function() {
+					Meteor.setTimeout(function() {
+						Router.go('/home');
+					}, 200);
+				}});
 			});
 		}
 	});

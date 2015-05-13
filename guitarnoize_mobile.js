@@ -5,7 +5,7 @@ if (Meteor.isClient) {
   Template.loadingTemplate.onRendered(function() {
     Meteor.setTimeout(function() {
       $('.logo').addClass('show');
-    }, 300);
+    }, 100);
   });
 
   Template.home.onCreated(function() {
