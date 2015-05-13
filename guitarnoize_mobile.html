@@ -8,7 +8,7 @@
 <template name="defaultLayout">
 	<div class="container">
 		<header>
-			<h2>Header</h2>
+      <div class="logo-home"><img class="img-responsive" src="/GN_logo.svg"></div>
 		</header>
 	</div>
 
@@ -18,13 +18,13 @@
 
 	<div class="container">
 		<footer>
-			<h2>Footer</h2>
+			<p>&copy; Guitarnoize.com</p>
 		</footer>
 	</div>
 </template>
 
 <template name="loadingTemplate">
-  <div class="container">
+  <div class="container flex-container">
     <div class="logo"><img class="img-responsive" src="/GN_logo.svg"></div>
   </div>
 </template>
@@ -39,7 +39,6 @@
 </template>
 
 <template name="post">
-	<h1>Single post</h1>
 	{{#with current_post}}
 		<h2>{{{title}}}</h2>
 		<h3>{{date}}</h3>

@@ -6,7 +6,6 @@ Router.map(function() {
 			$.getJSON( "http://guitarnoize.com/wp-json/posts", function( data ) {
 				Session.set('posts', data);
 				$('.logo').velocity({
-					marginTop: '-=50px',
 					opacity: 0
 				}, {duration:200, easing:'ease-out', complete: function() {
 					Meteor.setTimeout(function() {

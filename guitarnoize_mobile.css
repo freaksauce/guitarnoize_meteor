@@ -1,10 +1,27 @@
-/* CSS declarations go here */
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 .logo {
+  display: -webkit-box!important;
+  display: -ms-flexbox!important;
+  display: -webkit-flex!important;
+  display: flex!important;
   opacity: 0;
+  width: 300px;
 }
 .logo.show {
   opacity: 1;
   transition: opacity .5s ease-out;
   -moz-transition: opacity .5s ease-out;
   -webkit-transition: opacity .5s ease-out;
+}
+.logo-home {
+  width: 150px;
+  margin: 10px auto;
 }
