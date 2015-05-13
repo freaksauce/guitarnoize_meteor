@@ -29,6 +29,10 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.post.onRendered(function() {
+      $('img').addClass('img-responsive');
+  });
+
   Template.post.helpers({
     current_post: function() {
       return Session.get('current_post');
