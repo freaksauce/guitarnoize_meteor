@@ -2,6 +2,12 @@ posts = new Mongo.Collection('posts');
 
 if (Meteor.isClient) {
 
+  Template.home.onCreated(function() {
+    if (Session.get('posts') == undefined) {
+      Router.go('loading');
+    }
+  });
+
   Template.home.helpers({
     posts: function () {
       var data = Session.get('posts');

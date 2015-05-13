@@ -1,16 +1,17 @@
 Router.map(function() {
 	this.route('loading', {
 		path: '/',
-		layoutTemplate: 'loadingTemplate'
-	});
-	this.route('home', {
-		path: '/home/',
-		layoutTemplate: 'defaultLayout',
+		layoutTemplate: 'loadingTemplate',
 		data: function() {
 			$.getJSON( "http://guitarnoize.com/wp-json/posts", function( data ) {
 				Session.set('posts', data);
+				Router.go('/home');
 			});
 		}
+	});
+	this.route('home', {
+		path: '/home/',
+		layoutTemplate: 'defaultLayout'
 	});
 	this.route('post', {
 		path: '/post/:permalink',
