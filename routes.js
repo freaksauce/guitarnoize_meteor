@@ -1,16 +1,20 @@
 Router.map(function() {
-	this.route('home', {
+	this.route('loading', {
 		path: '/',
+		layoutTemplate: 'loadingTemplate'
+	});
+	this.route('home', {
+		path: '/home/',
 		layoutTemplate: 'defaultLayout',
 		data: function() {
 			$.getJSON( "http://guitarnoize.com/wp-json/posts", function( data ) {
 				Session.set('posts', data);
 			});
-
 		}
 	});
 	this.route('post', {
 		path: '/post/:permalink',
+		layoutTemplate: 'defaultLayout',
 		data: function() {
 			var permalinkVar = this.params.permalink;
 			$.getJSON( "http://guitarnoize.com/wp-json/posts/"+permalinkVar, function( data ) {
@@ -31,7 +35,6 @@ Router.map(function() {
 					});
 				}, 200);
 			});
-		},
-		layoutTemplate: 'defaultLayout'
+		}
 	});
 });
