@@ -3,13 +3,13 @@ Meteor.methods({
 
     _.each(data, function(post) {
       // console.log(post.title);
-      var ID = post.ID;
-      var title = post.title;
-
-      // posts.insert({
-      //   ID: ID,
-      //   title: title
-      // });
+      myID = post.ID;
+      myTitle = post.title;
+console.log(myID);
+      posts.insert({
+        ID: myID,
+        title: myTitle
+      });
 
     });
   }
