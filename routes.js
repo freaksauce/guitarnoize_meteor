@@ -33,13 +33,13 @@ Router.map(function() {
 					$('h3').text('Published: '+dateArr[2]+'-'+dateArr[1]+'-'+dateArr[0]);
 					$('iframe').each(function() {
 						var realSrc = $(this).data('src');
-						console.log(realSrc);
 						$(this).attr('src', realSrc);
 						$(this).wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
 					});
 					$('img').each(function() {
 						var realSrc = $(this).data('src');
 						$(this).attr('src', realSrc);
+						$(this).addClass('img-responsive');
 					});
 				}, 200);
 			});
