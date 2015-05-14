@@ -4,7 +4,7 @@ Router.map(function() {
 		layoutTemplate: 'loadingTemplate',
 		data: function() {
 			$.getJSON( "http://guitarnoize.com/wp-json/posts", function( data ) {
-				Session.set('posts', data);
+				Session.setPersistent('posts', data);
 				$('.logo').velocity({
 					opacity: 0
 				}, {duration:200, easing:'ease-out', complete: function() {
