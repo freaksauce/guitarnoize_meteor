@@ -35,6 +35,7 @@ Router.map(function() {
 						var realSrc = $(this).data('src');
 						console.log(realSrc);
 						$(this).attr('src', realSrc);
+						$(this).wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
 					});
 					$('img').each(function() {
 						var realSrc = $(this).data('src');
