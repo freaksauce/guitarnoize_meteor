@@ -32,11 +32,11 @@
 
 <template name="home">
 
-	<ul class="list-unstyled">
+	<div class="list-group">
 	{{#each posts}}
-		<li><a href="/post/{{ID}}">{{{title}}}</a></li>
+		<a class="list-group-item" href="/post/{{ID}}">{{{title}}}</a>
 	{{/each}}
-	</ul>
+  </div>
 </template>
 
 <template name="post">
