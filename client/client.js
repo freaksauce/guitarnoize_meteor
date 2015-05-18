@@ -1,3 +1,5 @@
+Meteor.subscribe("posts");
+
 Template.loadingTemplate.onRendered(function() {
   Meteor.setTimeout(function() {
     $('.logo').addClass('show');

@@ -6,11 +6,16 @@ Meteor.methods({
       myID = post.ID;
       myTitle = post.title;
 console.log(myID);
-      posts.insert({
+      var myInsert = posts.insert({
         ID: myID,
         title: myTitle
       });
+      console.log(myInsert);
 
     });
   }
+});
+
+Meteor.publish("posts", function () {
+  return Posts.find();
 });
