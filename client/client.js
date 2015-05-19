@@ -58,6 +58,10 @@ Template.post.helpers({
   current_post: function() {
     var postId = Session.get('postId');
     var post = Posts.findOne({ID: parseInt(postId)});
-    return post;
+    if (post !== undefined) {
+      return post;
+    }else{
+      Router.go('/')
+    }
   }
 });
