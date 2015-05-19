@@ -6,6 +6,19 @@ Template.loadingTemplate.onRendered(function() {
   }, 100);
 });
 
+Template.defaultLayout.helpers({
+  isPostPage: function() {
+    if (Session.get('postId') !== null) {
+      return true;
+    }
+  }
+});
+Template.defaultLayout.events({
+  'click #homeBtn': function() {
+    Router.go('/home');
+  }
+})
+
 Template.home.onCreated(function() {
   if (Session.get('posts') == undefined) {
     Router.go('loading');
@@ -14,8 +27,8 @@ Template.home.onCreated(function() {
 
 Template.home.helpers({
   posts: function () {
+    Session.set('postId', null);
     var data = Session.get('posts');
-    console.log(data);
     Meteor.call('updatePosts', data, function (error, result) {
       if (error) {
         console.log(error);
@@ -28,11 +41,9 @@ Template.home.helpers({
   }
 });
 
-Template.post.onCreated(function() {
-});
-
 Template.post.onRendered(function() {
-  $('#current_post').fadeOut(1);
+
+  $('#current_post').fadeOut(0);
 
   Meteor.setTimeout(function() {
     var postDate = $('h3').text();
@@ -58,10 +69,6 @@ Template.post.helpers({
   current_post: function() {
     var postId = Session.get('postId');
     var post = Posts.findOne({ID: parseInt(postId)});
-    if (post !== undefined) {
-      return post;
-    }else{
-      Router.go('/')
-    }
-  }
+    return post;
+  },
 });

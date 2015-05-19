@@ -9,6 +9,9 @@
 <template name="defaultLayout">
 	<div class="container">
 		<header>
+      {{#if isPostPage}}
+        <button id="homeBtn" class="btn btn-primary pull-left">Home</button>
+      {{/if}}
       <div class="logo-home"><img class="img-responsive" src="/GN_logo.svg"></div>
 		</header>
 	</div>
@@ -41,10 +44,15 @@
 
 <template name="post">
   <div id="current_post">
-  	{{#with current_post}}
-  		<h2>{{{title}}}</h2>
-  		<h3>{{date}}</h3>
-  		<div class="content">{{{content}}}</div>
-  	{{/with}}  
+    {{#if current_post}}
+    	{{#with current_post}}
+    		<h2>{{{title}}}</h2>
+    		<h3>{{date}}</h3>
+    		<div class="content">{{{content}}}</div>
+    	{{/with}}
+    {{else}}
+      <h2>The post you are looking for doesn't exist</h2>
+      <p><a href="/home">Return to homepage</a></p>
+    {{/if}}
   </div>
 </template>
