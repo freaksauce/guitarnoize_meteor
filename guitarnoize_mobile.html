@@ -40,9 +40,11 @@
 </template>
 
 <template name="post">
-	{{#with current_post}}
-		<h2>{{{title}}}</h2>
-		<h3>{{date}}</h3>
-		<div class="content">{{{content}}}</div>
-	{{/with}}
+  <div id="current_post">
+  	{{#with current_post}}
+  		<h2>{{{title}}}</h2>
+  		<h3>{{date}}</h3>
+  		<div class="content">{{{content}}}</div>
+  	{{/with}}  
+  </div>
 </template>

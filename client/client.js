@@ -28,10 +28,13 @@ Template.home.helpers({
   }
 });
 
+Template.post.onCreated(function() {
+});
+
 Template.post.onRendered(function() {
+  $('#current_post').fadeOut(1);
 
   Meteor.setTimeout(function() {
-
     var postDate = $('h3').text();
     var substrDate = postDate.substr(0,10);
     var dateArr = substrDate.split('-');
@@ -46,17 +49,15 @@ Template.post.onRendered(function() {
       $(this).attr('src', realSrc);
       $(this).addClass('img-responsive');
     });
+    $('#current_post').fadeIn(500);
+  }, 800);
 
-  }, 1000);
-
-  // $('img').addClass('img-responsive');
 });
 
 Template.post.helpers({
   current_post: function() {
     var postId = Session.get('postId');
     var post = Posts.findOne({ID: parseInt(postId)});
-    console.log(post);
     return post;
   }
 });
