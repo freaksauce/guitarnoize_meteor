@@ -9,5 +9,5 @@ iron:router
 twbs:bootstrap
 iron:layout
 msavin:mongol
-velocityjs:velocityjs
 u2622:persistent-session
+mrt:jquery-easing
