@@ -29,6 +29,10 @@ Template.defaultLayout.helpers({
     if (Session.get('postId') !== null) {
       return true;
     }
+  },
+  year: function() {
+    var d = new Date();
+    return d.getFullYear();
   }
 });
 Template.defaultLayout.events({
@@ -61,6 +65,7 @@ Template.home.helpers({
 
 Template.post.onRendered(function() {
 
+  $('#loading').show();
   $('#current_post').fadeOut(0);
 
   Meteor.setTimeout(function() {
@@ -78,6 +83,7 @@ Template.post.onRendered(function() {
       $(this).attr('src', realSrc);
       $(this).addClass('img-responsive');
     });
+    $('#loading').hide();
     $('#current_post').fadeIn(500);
   }, 800);
 

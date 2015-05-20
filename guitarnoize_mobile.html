@@ -22,13 +22,13 @@
 
 	<div class="container">
 		<footer>
-			<p>&copy; Guitarnoize.com</p>
+			<p>&copy; {{year}} Guitarnoize.com</p>
 		</footer>
 	</div>
 </template>
 
 <template name="loadingTemplate">
-  <div class="container flex-container">
+  <div class="container">
     <div class="logo"><img class="img-responsive" src="/GN_logo.svg"></div>
   </div>
 </template>
@@ -43,6 +43,7 @@
 </template>
 
 <template name="post">
+  <div id="loading"><h2>Loading post data...</h2></div>
   <div id="current_post">
     {{#if current_post}}
     	{{#with current_post}}

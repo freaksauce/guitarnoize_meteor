@@ -19,3 +19,6 @@
 #current_post {
   display: none;
 }
+#loading {
+  height: 70vh;
+}
