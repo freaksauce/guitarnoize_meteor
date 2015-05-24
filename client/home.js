@@ -10,11 +10,7 @@ Template.home.onCreated(function(){
       console.log("> Received posts. \n\n")
       var postCount = Posts.find().count();
       if (postCount > 0) {
-        console.log(postCount);
-        Session.set('posts', Posts.find({},{limit: 10}).fetch());
-      }else{
-        //db is empty, redirect to loader to populate db via rest api
-        // Router.go('/');
+        Session.set('posts', Posts.find({},{limit: Session.get('ppp')}).fetch());
       }
     } else {
       console.log("> Subscription is not ready yet. \n\n");

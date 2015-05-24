@@ -9,6 +9,7 @@ function aniLogo() {
     easing:'easeOutExpo',
     complete: function() {
       console.log('ani logo complete');
+      Router.go('/home');
     }
   });
 }
@@ -19,7 +20,10 @@ Template.loadingTemplate.onCreated(function() {
   instance.autorun(function () {
     var subscription = instance.subscribe('posts');
     if (subscription.ready()) {
-      Router.go('/home');
+      Meteor.setTimeout(function() {
+        aniLogo();
+      }, 500);
+      console.log('move along')
     }
   });
 
@@ -27,7 +31,4 @@ Template.loadingTemplate.onCreated(function() {
 
 Template.loadingTemplate.onRendered(function() {
   $('.logo').addClass('show');
-  Meteor.setTimeout(function() {
-    aniLogo();
-  }, 1000);
 });
