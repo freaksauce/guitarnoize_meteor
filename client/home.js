@@ -1,10 +1,26 @@
 Meteor.subscribe("posts");
 Session.set('ppp', 10);
 
-Template.home.onCreated(function() {
-  if (Session.get('posts') == undefined) {
-    Router.go('loading');
-  }
+Template.home.onCreated(function(){
+  var instance = this;
+
+  instance.autorun(function () {
+    var subscription = instance.subscribe('posts');
+    if (subscription.ready()) {
+      console.log("> Received posts. \n\n")
+      var postCount = Posts.find().count();
+      if (postCount > 0) {
+        console.log(postCount);
+        Session.set('posts', Posts.find({},{limit: 10}).fetch());
+      }else{
+        //db is empty, redirect to loader to populate db via rest api
+        // Router.go('/');
+      }
+    } else {
+      console.log("> Subscription is not ready yet. \n\n");
+    }
+  });
+
 });
 
 Template.home.helpers({

@@ -8,12 +8,22 @@ function aniLogo() {
     duration:600,
     easing:'easeOutExpo',
     complete: function() {
-      Meteor.setTimeout(function() {
-        Router.go('/home');
-      }, 200);
+      console.log('ani logo complete');
     }
   });
 }
+
+Template.loadingTemplate.onCreated(function() {
+  var instance = this;
+
+  instance.autorun(function () {
+    var subscription = instance.subscribe('posts');
+    if (subscription.ready()) {
+      Router.go('/home');
+    }
+  });
+
+});
 
 Template.loadingTemplate.onRendered(function() {
   $('.logo').addClass('show');
