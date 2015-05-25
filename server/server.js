@@ -21,7 +21,7 @@ Meteor.methods({
     });
   },
   getPosts: function(ppp) {
-    ppp += 10;
+    console.log('getPosts called');
     var url = "http://guitarnoize.com/wp-json/posts";
     var result = HTTP.get(url, {
       params: {
@@ -41,5 +41,5 @@ Meteor.methods({
 });
 
 Meteor.publish("posts", function () {
-  return Posts.find();
+  return Posts.find({}, {sort: {date: -1}});
 });
