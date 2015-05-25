@@ -3,14 +3,13 @@ Session.set('ppp', 10);
 
 Template.home.onCreated(function(){
   var instance = this;
-
   instance.autorun(function () {
     var subscription = instance.subscribe('posts');
     if (subscription.ready()) {
-      console.log("> Received posts. \n\n")
       var postCount = Posts.find().count();
+      console.log(postCount);
+      console.log("> Received posts. \n\n")
       if (postCount > 0) {
-        // var data = Posts.find({},{limit: Session.get('ppp')}, {sort: {date: -1}}).fetch();
         var data = Posts.find({}, {sort: {date: -1}, limit: Session.get('ppp')}).fetch();
 
         console.log('autorun');
@@ -22,6 +21,10 @@ Template.home.onCreated(function(){
     }
 
   });
+
+});
+
+Template.home.onRendered(function() {
 
   // get updated posts from api and update db
   Meteor.call('getPosts', Session.get('ppp'), function(error, result) {

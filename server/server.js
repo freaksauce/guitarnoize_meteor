@@ -1,3 +1,20 @@
+var apiCall = function (apiUrl, callback) {
+  try {
+    var response = HTTP.get(apiUrl).data;
+    callback(null, response);
+  } catch (error) {
+    if (error.response) {
+      var errorCode = error.response.data.code;
+      var errorMessage = error.response.data.message;
+    } else {
+      var errorCode = 500;
+      var errorMessage = 'Cannot access the API';
+    }
+    var myError = new Meteor.Error(errorCode, errorMessage);
+    callback(myError, null);
+  }
+}
+
 Meteor.methods({
   updatePosts: function(data) {
 
@@ -22,20 +39,10 @@ Meteor.methods({
   },
   getPosts: function(ppp) {
     console.log('getPosts called');
-    var url = "http://guitarnoize.com/wp-json/posts";
-    var result = HTTP.get(url, {
-      params: {
-        'filter[posts_per_page]': ppp
-      }
-    });
-    if (result.statusCode==200) {
-    	var respJson = JSON.parse(result.content);
-  		return respJson;
-  	} else {
-			console.log("Response issue: ", result.statusCode);
-			var errorJson = JSON.parse(result.content);
-			throw new Meteor.Error(result.statusCode, errorJson.error);
-		}
+    this.unblock();
+    var apiUrl = "http://guitarnoize.com/wp-json/posts?filter[posts_per_page]="+ppp;
+    var response = Meteor.wrapAsync(apiCall)(apiUrl);
+    return response;
   }
 
 });
