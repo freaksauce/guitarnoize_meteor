@@ -30,5 +30,6 @@ Template.loadingTemplate.onCreated(function() {
 });
 
 Template.loadingTemplate.onRendered(function() {
-  $('.logo').addClass('show');
+  var instance = Template.instance();
+  instance.$('.logo').addClass('show');
 });

@@ -36,6 +36,7 @@ Meteor.methods({
       });
 
     });
+    return true;
   },
   getPosts: function(ppp) {
     console.log('getPosts called');

@@ -7,13 +7,12 @@ Template.home.onCreated(function(){
     var subscription = instance.subscribe('posts');
     if (subscription.ready()) {
       var postCount = Posts.find().count();
-      console.log(postCount);
+      // console.log(postCount);
       console.log("> Received posts. \n\n")
       if (postCount > 0) {
         var data = Posts.find({}, {sort: {date: -1}, limit: Session.get('ppp')}).fetch();
-
-        console.log('autorun');
-        console.log(data);
+        // console.log('autorun');
+        // console.log(data);
         Session.set('posts', data);
       }
     } else {
@@ -25,16 +24,16 @@ Template.home.onCreated(function(){
 });
 
 Template.home.onRendered(function() {
-
+  var instance = Template.instance();
   // get updated posts from api and update db
   Meteor.call('getPosts', Session.get('ppp'), function(error, result) {
     if (error) {
       console.log(error);
     }else{
-      console.log('limit :'+Session.get('ppp'));
+      // console.log('limit :'+Session.get('ppp'));
       Session.set('posts', result);
       Meteor.call('updatePosts', result);
-      $('.loadMore').text('Load more');
+      instance.$('.loadMore').text('Load more');
     }
   });
 
@@ -49,17 +48,20 @@ Template.home.helpers({
 });
 
 Template.home.events({
-  'click .loadMore': function(evt) {
-    $(evt.currentTarget).text('Loading...');
+  'click .loadMore': function(evt, template) {
+    template.$(evt.currentTarget).text('Loading...');
     Meteor.call('getPosts', Session.get('ppp')+10, function(error, result) {
       if (error) {
         console.log(error);
       }else{
         Session.set('ppp', Session.get('ppp')+10);
-        console.log(Session.get('ppp'));
+        // console.log(Session.get('ppp'));
         Session.set('posts', result);
-        Meteor.call('updatePosts', result);
-        $(evt.currentTarget).text('Load more');
+        Meteor.call('updatePosts', result, function(error, result) {
+          if (result) {
+            template.$(evt.currentTarget).text('Load more');
+          }
+        });
       }
     });
   }
