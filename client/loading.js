@@ -18,13 +18,13 @@ Template.loadingTemplate.onCreated(function() {
   var instance = this;
 
   instance.autorun(function () {
-    var subscription = instance.subscribe('posts');
-    if (subscription.ready()) {
       Meteor.setTimeout(function() {
         aniLogo();
-      }, 500);
-      console.log('move along')
-    }
+      }, 1000);
+    // var subscription = instance.subscribe('posts');
+    // if (subscription.ready()) {
+    //   console.log('move along')
+    // }
   });
 
 });
