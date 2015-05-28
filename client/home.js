@@ -18,7 +18,6 @@ Template.home.onCreated(function(){
     } else {
       console.log("> Subscription is not ready yet. \n\n");
     }
-
   });
 
 });
