@@ -11,6 +11,6 @@ Template.defaultLayout.helpers({
 });
 Template.defaultLayout.events({
   'click #homeBtn': function() {
-    Router.go('/home');
+    Router.go('/');
   }
 });

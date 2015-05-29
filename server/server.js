@@ -1,3 +1,5 @@
+Kadira.connect('GyuYX8s68g68wRPPF', '09f56530-17a1-47b5-bbbf-65c9bab8417f')
+
 var apiCall = function (apiUrl, callback) {
   try {
     var response = HTTP.get(apiUrl).data;
