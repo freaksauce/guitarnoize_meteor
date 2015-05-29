@@ -20,11 +20,12 @@
 		{{> yield}}
 	</div>
 
-	<div class="container">
-		<footer>
-			<p>&copy; {{year}} Guitarnoize.com</p>
-		</footer>
-	</div>
+	<footer>
+    <div class="container">
+  		<p>&copy; {{year}} Guitarnoize.com</p>
+  	</div>
+	</footer>
+
 </template>
 
 <template name="home">
@@ -35,7 +36,7 @@
 	{{/each}}
   </div>
 
-  <p><a class="loadMore" href="#">Load more</a></p>
+  <p class="loadMore"><a href="#">Load more</a></p>
 </template>
 
 <template name="post">

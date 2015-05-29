@@ -32,7 +32,10 @@ Template.home.onRendered(function() {
       // console.log('limit :'+Session.get('ppp'));
       Session.set('posts', result);
       Meteor.call('updatePosts', result);
-      instance.$('.loadMore').text('Load more');
+
+      $('footer').show();
+      instance.$('.loadMore').fadeIn();
+      instance.$('.loadMore a').text('Load more');
     }
   });
 
@@ -47,7 +50,7 @@ Template.home.helpers({
 });
 
 Template.home.events({
-  'click .loadMore': function(evt, template) {
+  'click .loadMore a': function(evt, template) {
     template.$(evt.currentTarget).text('Loading...');
     Meteor.call('getPosts', Session.get('ppp')+10, function(error, result) {
       if (error) {

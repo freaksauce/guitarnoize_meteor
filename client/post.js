@@ -19,7 +19,9 @@ Template.post.onRendered(function() {
       instance.$(this).addClass('img-responsive');
     });
     instance.$('#loading').hide();
-    instance.$('#current_post').fadeIn(500);
+    instance.$('#current_post').fadeIn(500, function() {
+      $('footer').fadeIn();
+    });
   }, 800);
 
 });

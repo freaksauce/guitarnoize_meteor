@@ -5,3 +5,14 @@
 #current_post {
   display: none;
 }
+.loadMore {
+  display: none;
+}
+.container {
+
+}
+footer {
+  background: #f2f2f2;
+  display: none;
+  padding: 10px 0 0 0;
+}
