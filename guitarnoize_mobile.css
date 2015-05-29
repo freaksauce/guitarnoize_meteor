@@ -1,24 +1,7 @@
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -110px 0 0 -150px;
-  width: 300px;
-  height: 210px;
-}
-.logo.show {
-  opacity: 1;
-  transition: opacity .5s ease-out;
-  -moz-transition: opacity .5s ease-out;
-  -webkit-transition: opacity .5s ease-out;
-}
 .logo-home {
   width: 150px;
   margin: 10px auto;
 }
 #current_post {
   display: none;
-}
-#loading {
-  height: 70vh;
 }
