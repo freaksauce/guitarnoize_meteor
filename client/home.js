@@ -24,6 +24,7 @@ Template.home.onCreated(function(){
 
 Template.home.onRendered(function() {
   var instance = Template.instance();
+  $('.spinner').show();
   // get updated posts from api and update db
   Meteor.call('getPosts', Session.get('ppp'), function(error, result) {
     if (error) {
@@ -36,6 +37,7 @@ Template.home.onRendered(function() {
       $('footer').show();
       instance.$('.loadMore').fadeIn();
       instance.$('.loadMore a').text('Load more');
+      $('.spinner').hide();
     }
   });
 
