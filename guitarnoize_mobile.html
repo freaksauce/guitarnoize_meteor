@@ -55,6 +55,9 @@
       {{else}}
         <!-- <h2>The post you are looking for doesn't exist</h2>
         <p><a href="/home">Return to homepage</a></p> -->
+      {{/if}}
+      {{#if Template.subscriptionsReady}}
+      {{else}}
         <div class="spinner"></div>
         <div id="loading"><h2>Loading post data...</h2></div>
       {{/if}}
