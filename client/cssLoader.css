@@ -1,6 +1,5 @@
 div.spinner {
   margin: auto;
-  display: none;
 }
 div.spinner:before,
 div.spinner:after {

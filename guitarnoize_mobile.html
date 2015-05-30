@@ -1,6 +1,5 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/cssLoader.css" />
   <title>Guitar Noize Meteor</title>
 </head>
 
@@ -18,41 +17,46 @@
 	</div>
 
 	<div class="container">
-    <div class="spinner"></div>
 		{{> yield}}
 	</div>
 
 	<footer>
     <div class="container">
-  		<p>&copy; {{year}} Guitarnoize.com</p>
+      {{#if Template.subscriptionsReady}}
+    		<p>&copy; {{year}} Guitarnoize.com</p>
+      {{/if}}
   	</div>
 	</footer>
 
 </template>
 
 <template name="home">
-
-	<div class="list-group">
-	{{#each posts}}
-		<a class="list-group-item" href="/post/{{ID}}">{{{title}}}</a>
-	{{/each}}
-  </div>
+  {{#if Template.subscriptionsReady}}
+  	<div class="list-group">
+  	{{#each posts}}
+  		<a class="list-group-item" href="/post/{{ID}}">{{{title}}}</a>
+  	{{/each}}
+    </div>
+  {{else}}
+    <div class="spinner"></div>
+  {{/if}}
 
   <p class="loadMore"><a href="#">Load more</a></p>
 </template>
 
 <template name="post">
-  <div id="loading"><h2>Loading post data...</h2></div>
-  <div id="current_post">
-    {{#if current_post}}
-    	{{#with current_post}}
-    		<h2>{{{title}}}</h2>
-    		<h3>{{date}}</h3>
-    		<div class="content">{{{content}}}</div>
-    	{{/with}}
-    {{else}}
-      <h2>The post you are looking for doesn't exist</h2>
-      <p><a href="/home">Return to homepage</a></p>
-    {{/if}}
-  </div>
+    <div id="current_post">
+      {{#if current_post}}
+      	{{#with current_post}}
+      		<h2>{{{title}}}</h2>
+      		<h3>{{date}}</h3>
+      		<div class="content">{{{content}}}</div>
+      	{{/with}}
+      {{else}}
+        <!-- <h2>The post you are looking for doesn't exist</h2>
+        <p><a href="/home">Return to homepage</a></p> -->
+        <div class="spinner"></div>
+        <div id="loading"><h2>Loading post data...</h2></div>
+      {{/if}}
+    </div>
 </template>
