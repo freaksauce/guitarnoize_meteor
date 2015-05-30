@@ -25,9 +25,14 @@ Template.post.onRendered(function() {
   instance.$('#loading').show();
   instance.$('#current_post').fadeOut(0);
 
-  Meteor.setTimeout(function() {
-    reformatTemplate(instance);
-  }, 800);
+  instance.autorun(function() {
+    var postId = Session.get('postId');
+    var subscription = instance.subscribe('post', postId);
+    if (subscription.ready()) {
+      console.log('sub ready');
+      reformatTemplate(instance);
+    }
+  });
 
 });
 

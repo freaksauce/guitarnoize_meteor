@@ -53,3 +53,6 @@ Meteor.methods({
 Meteor.publish('posts', function () {
   return Posts.find({}, {sort: {date: -1}});
 });
+Meteor.publish('post', function(postId) {
+  return Posts.find({ID: postId});
+});
